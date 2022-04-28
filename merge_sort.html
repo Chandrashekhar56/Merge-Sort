@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<script>
+function merge_sort_function(arr1,middle_element = arr1.length/2)
+{
+
+  if(arr1.length < 2){
+    return arr1
+ }
+
+ var Index_left = arr1.splice(0,middle_element); 
+ return merge_function(merge_sort_function(Index_left),merge_sort_function(arr1))
+}
+function merge_function(Index_left,Index_right)
+{
+  var arr = [];
+  while(Index_left.length && Index_right.length)
+  {
+    if(Index_left[0] < Index_right [0])
+    {
+      arr.push(Index_left.shift())
+    }
+    else
+    {
+      arr.push(Index_right.shift())
+    }
+  }
+
+  return [...arr,...Index_left,...Index_right];
+}
+document.write(merge_sort_function([10,5,-3,8,2,-6,4,7,9,0,-1,1]));
+</script>
+</body>
+</html>
